@@ -27,7 +27,7 @@ app.get('/api/notes', (req, res) => {
 app.post('/api/notes', (req, res) => {
     getNotes().then(data => { 
         const newArray = [...data, {title: req.body.title, text: req.body.text, id: uuidv4()}]
-        writeFile("db/db.json", JSON.stringify(newArray))
+        writeFile("db/db.json", JSON.stringify(newArray, null, 2))
     }).then( () => res.json({msg:"okay"}))
 })
 
